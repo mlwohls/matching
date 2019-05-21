@@ -1,7 +1,7 @@
 {
   "project": "matching",
-  "container": "Test-Container",
-  "command": "bnZpZGlhLXNtaQ==",
-  "workspace": "/Users/erik/.repositories/matching",
+  "container": "Paperspace + Fast.AI (JupyterLab BETA) --machineType P100",
+  "command": "Li9ydW4uc2g=",
+  "workspace": "https://github.com/eriknomitch/matching.git",
   "lastJobId": "jseu0wk15qdkva"
 }
