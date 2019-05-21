@@ -1,7 +1,8 @@
 {
   "project": "matching",
-  "container": "Paperspace + Fast.AI (JupyterLab BETA) --machineType P100",
-  "command": "Li9ydW4uc2g=",
+  "container": "Paperspace + Fast.AI (JupyterLab BETA)",
+  "command": "cHl0aG9uIG1haW4ucHk=",
   "workspace": "https://github.com/eriknomitch/matching.git",
-  "lastJobId": "jseu0wk15qdkva"
+  "lastJobId": "jseu0wk15qdkva",
+  "machineType": "GPU+"
 }

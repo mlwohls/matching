@@ -1,7 +1,12 @@
+#!/bin/zsh
+
+source .env
+
 paperspace jobs create \
   --container "Paperspace + Fast.AI (JupyterLab BETA)" \
-  --machineType "P4000" \
+  --machineType "GPU+" \
   --command "python main.py" \
   --workspace "https://github.com/eriknomitch/matching.git" \
-  --projectId "pr4cdzin8" \
-  --isPreemptible true
+  --workspaceUsername $GITHUB_USERNAME \
+  --workspacePassword $GITHUB_PERSONAL_ACCESS_TOKEN \
+  --projectId "pr4cdzin8"
