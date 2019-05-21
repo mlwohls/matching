@@ -1,1 +1,7 @@
-paperspace jobs create --container "Paperspace + Fast.AI (JupyterLab BETA) --machineType P100" --command './run.sh' --workspace "https://github.com/eriknomitch/matching.git" --projectId "pr4cdzin8" --isPreemptible true
+paperspace jobs create \
+  --container "Paperspace + Fast.AI (JupyterLab BETA)" \
+  --machineType "P4000" \
+  --command "python main.py" \
+  --workspace "https://github.com/eriknomitch/matching.git" \
+  --projectId "pr4cdzin8" \
+  --isPreemptible true
