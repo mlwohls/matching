@@ -7,25 +7,22 @@ import time
 METRIC1 = "testMetric1"
 METRIC2 = "testMetric2"
 
-if __name__ == "__main__":
-    print(os.listdir("/storage"))
+print(os.listdir("/storage"))
 
-    client = Client()
+client = Client()
 
-    endAt = datetime.now() + timedelta(hours=1)
+endAt = datetime.now() + timedelta(hours=1)
 
-    while datetime.now() <= endAt:
-        print(
-            "sending {} with counter at {}".format(METRIC1, datetime.now().isoformat())
+while datetime.now() <= endAt:
+    print("sending {} with counter at {}".format(METRIC1, datetime.now().isoformat()))
+    client.increment(METRIC1, 1)
+
+    randNum = randint(1, 100)
+    print(
+        "sending {} with gauge {} at {}".format(
+            METRIC2, randNum, datetime.now().isoformat()
         )
-        client.increment(METRIC1, 1)
+    )
+    client.gauge(METRIC2, randNum)
 
-        randNum = randint(1, 100)
-        print(
-            "sending {} with gauge {} at {}".format(
-                METRIC2, randNum, datetime.now().isoformat()
-            )
-        )
-        client.gauge(METRIC2, randNum)
-
-        time.sleep(2)
+    time.sleep(2)
