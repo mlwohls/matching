@@ -5,9 +5,6 @@ whoami
 pwd
 echo
 
-source ~/.bashrc
-activate fastai
-
 which python
 python --version
 ls -1 /usr/bin | grep python
@@ -30,4 +27,4 @@ jupyter nbconvert --to python /storage/match_2p0/main.ipynb
 cp /storage/match_2p0/main.py .
 
 echo "Starting..."
-python main.py
+python3 main.py
