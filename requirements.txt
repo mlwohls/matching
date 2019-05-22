@@ -5,3 +5,4 @@ usaddress
 sklearn
 nvector
 tldextract
+ipython
