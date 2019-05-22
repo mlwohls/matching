@@ -14,12 +14,17 @@ source .env
 
 # Copy Example
 # ------------------------------------------------
-cp experiment_env_example.json experiment_env.json
-
-echo "Edit 'experiment_env_example.json' then press ENTER"
+echo "Copy example JSON to 'experiment_env.json'? This will overwrite it. Press ENTER to continue."
 read
 
-echo "Creating job in 5 seconds... (Ctrl-C to abort)"
+cp experiment_env_example.json experiment_env.json
+
+echo "Edit 'experiment_env.json' for this experiment."
+echo
+echo "When finished, press ENTER to create job."
+read
+
+echo "Creating job..."
 sleep 5
 
 # Create Job
