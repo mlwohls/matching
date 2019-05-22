@@ -1,19 +1,15 @@
 #!/bin/bash
 
-# cd /paperspace
-# ls -1
-# echo "sample artifact" > /artifacts/test.txt
-
-
-echo "Session:"
-pwd
 whoami
-echo
+pwd
 
 echo "Installing requirements..."
 pip install --upgrade --requirement requirements.txt > /dev/null
 echo
 
-echo "Starting main.py..."
-python main.py
+echo "Starting..."
 
+ipython nbconvert --to python /storage/match_2p0/main.ipynb
+mv /storage/match_2p0/main.py /paperspace
+
+python main.py
