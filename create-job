@@ -1,11 +1,33 @@
 #!/bin/zsh
+# ================================================
+# CREATE-JOB =====================================
+# ================================================
+
+# .env
+# ------------------------------------------------
+if ! test -f .env; then
+  echo "fatal: .env does not exist"
+  exit 1
+fi
 
 source .env
 
+# Copy Example
+# ------------------------------------------------
+cp experiment_env_example.json experiment_env.json
+
+echo "Edit 'experiment_env_example.json' then press ENTER"
+read
+
+echo "Creating job in 5 seconds... (Ctrl-C to abort)"
+sleep 5
+
+# Create Job
+# ------------------------------------------------
 _name=`date +%Y-%m-%d+%H:%M:%S`
 
 # TEMPORARY:
-_experiment_env_arg="'`cat experiment_env_example.json | tr -d '\n' | tr -d ' '`'"
+_experiment_env_arg="'`cat experiment_env.json | tr -d '\n' | tr -d ' '`'"
 
 paperspace jobs create \
   --project "Matching" \
