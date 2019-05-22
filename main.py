@@ -7,6 +7,7 @@ import time
 METRIC1 = "testMetric1"
 METRIC2 = "testMetric2"
 
+print(os.listdir("/storage"))
 print(os.listdir("/storage/matching"))
 
 client = Client()
