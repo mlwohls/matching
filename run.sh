@@ -6,7 +6,7 @@ pwd
 echo
 
 echo "Installing requirements..."
-pip install --upgrade --requirement requirements.txt > /dev/null
+pip install --requirement requirements.txt > /dev/null
 echo
 
 echo "Converting..."
