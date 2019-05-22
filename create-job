@@ -7,11 +7,11 @@ _name=`date +%Y-%m-%d+%H:%M:%S`
 paperspace jobs create \
   --project "Matching" \
   --name $_name \
-  --experimentEnv "{\"EPOCHS_EVAL\":5,\"TRAIN_EPOCHS\":10,\"MAX_STEPS\":1000,\"EVAL_SECS\":10}" \
+  --experimentEnv `cat experiment_env_example.json` \
   --ports "8888" \
   --customMetrics "testMetric1,testMetric2" \
-  --container "Paperspace + Fast.AI (JupyterLab BETA)" \
-  --machineType "GPU+" \
+  --container "paperspace/fastai:1.0-CUDA9.2-base-3.0-v1.0.6" \
+  --machineType "P5000" \
   --command "/paperspace/run.sh" \
   --workspace "https://github.com/eriknomitch/matching.git" \
   --workspaceUsername $GITHUB_USERNAME \
