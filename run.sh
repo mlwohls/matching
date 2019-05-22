@@ -5,6 +5,9 @@ whoami
 pwd
 echo
 
+source ~/.bashrc
+activate fastai
+
 which python
 python --version
 ls -1 /usr/bin | grep python
