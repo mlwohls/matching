@@ -1,12 +1,12 @@
 #!/bin/bash
 
-cd /paperspace
+# cd /paperspace
+# ls -1
+# echo "sample artifact" > /artifacts/test.txt
 
-ls -1
+echo "Installing requirements..."
+pip install --upgrade --requirement requirements.txt > /dev/null
 
-echo "sample artifact" > /artifacts/test.txt
-
-pip install -U gradient-statsd
-
+echo "Starting main.py..."
 python main.py
 
