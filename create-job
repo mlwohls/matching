@@ -5,7 +5,7 @@ source .env
 paperspace jobs create \
   --container "Paperspace + Fast.AI (JupyterLab BETA)" \
   --machineType "GPU+" \
-  --command "python main.py" \
+  --command "./run.sh" \
   --workspace "https://github.com/eriknomitch/matching.git" \
   --workspaceUsername $GITHUB_USERNAME \
   --workspacePassword $GITHUB_PERSONAL_ACCESS_TOKEN \
