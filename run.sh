@@ -18,6 +18,8 @@ echo
 # echo
 # test -d /root/.fastai && ls -1 /root/.fastai
 
+
+
 echo "Installing requirements..."
 pip install --requirement requirements.txt > /dev/null
 echo
@@ -27,4 +29,5 @@ jupyter nbconvert --to python /storage/match_2p0/main.ipynb
 cp /storage/match_2p0/main.py .
 
 echo "Starting..."
+source /paperspace/experiment_env
 python3.7 main.py

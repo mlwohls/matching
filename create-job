@@ -21,8 +21,15 @@ cp experiment_env_example.json experiment_env.json
 
 echo "Edit 'experiment_env.json' for this experiment."
 echo
-echo "When finished, press ENTER to create job (Ctrl-C to abort)"
+echo "When finished, press ENTER (Ctrl-C to abort)"
 read
+
+cat experiment_env.json | sed "s/  \"/export /" | sed "s/\": /=/" | sed "s/,//" | sed "s/{//" | sed "s/}//" > experiment_env
+
+echo "Commit"
+read
+
+echo "Press ENTER to create job"
 
 echo "Creating job..."
 sleep 5
