@@ -11,7 +11,7 @@ print(os.listdir("/storage"))
 
 client = Client()
 
-endAt = datetime.now() + timedelta(hours=1)
+endAt = datetime.now() + timedelta(minutes=5)
 
 while datetime.now() <= endAt:
     print("sending {} with counter at {}".format(METRIC1, datetime.now().isoformat()))
