@@ -4,11 +4,13 @@ source .env
 
 _name=`date +%Y-%m-%d+%H:%M:%S`
 
+# TEMPORARY:
+_experiment_env_arg="'`cat experiment_env_example.json | tr -d '\n' | tr -d ' '`'"
+
 paperspace jobs create \
   --project "Matching" \
   --name $_name \
-  --experimentEnv `cat experiment_env_example.json` \
-  --ports "8888" \
+  --experimentEnv $_experiment_env_arg \
   --customMetrics "testMetric1,testMetric2" \
   --container "paperspace/fastai:1.0-CUDA9.2-base-3.0-v1.0.6" \
   --machineType "P5000" \
