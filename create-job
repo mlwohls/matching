@@ -62,7 +62,7 @@ paperspace jobs create \
   --customMetrics "testMetric1,testMetric2" \
   --container "paperspace/fastai:1.0-CUDA9.2-base-3.0-v1.0.6" \
   --machineType "P5000" \
-  --command "RUN_NUM=$RUN_NUM /paperspace/run.sh" \
+  --command "RUN_NUM=$RUN_NUM bash -c '/paperspace/run.sh'" \
   --workspace "https://github.com/eriknomitch/matching.git" \
   --workspaceUsername $GITHUB_USERNAME \
   --workspacePassword $GITHUB_PERSONAL_ACCESS_TOKEN
