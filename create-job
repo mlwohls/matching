@@ -12,34 +12,48 @@ fi
 
 source .env
 
+# RUN_NUM
+# ------------------------------------------------
+RUN_NUM=$1
+
+if test -z $RUN_NUM; then;
+  echo "fatal: $0 <RUN_NUM>"
+  exit 1
+fi
+
 # Copy Example
 # ------------------------------------------------
-echo "Copy example JSON to 'experiment_env.json'? This will overwrite it. Press ENTER to continue (Ctrl-C to abort)"
-read
+# echo "Copy example JSON to 'experiment_env.json'? This will overwrite it. Press ENTER to continue (Ctrl-C to abort)"
+# read
 
-cp experiment_env_example.json experiment_env.json
+# cp experiment_env_example.json experiment_env.json
 
-echo "Edit 'experiment_env.json' for this experiment."
-echo
-echo "When finished, press ENTER (Ctrl-C to abort)"
-read
+# echo "Edit 'experiment_env.json' for this experiment."
+# echo
+# echo "When finished, press ENTER (Ctrl-C to abort)"
+# read
 
-cat experiment_env.json | sed "s/  \"/export /" | sed "s/\": /=/" | sed "s/,//" | sed "s/{//" | sed "s/}//" > experiment_env
+# cat experiment_env.json | sed "s/  \"/export /" | sed "s/\": /=/" | sed "s/,//" | sed "s/{//" | sed "s/}//" > experiment_env
 
-echo "Commit"
-read
+# echo "Commit"
+# read
 
-echo "Press ENTER to create job"
+# echo "Press ENTER to create job"
 
-echo "Creating job..."
-sleep 5
+# echo "Creating job..."
+# sleep 5
+
+
+# TEMPORARY:
+# _experiment_env_arg="'`cat experiment_env.json | tr -d '\n' | tr -d ' '`'"
+
 
 # Create Job
 # ------------------------------------------------
-_name=`date +%Y-%m-%d+%H:%M:%S`
+# _name=`date +%Y-%m-%d+%H:%M:%S`
+_name=$RUN_NUM
 
-# TEMPORARY:
-_experiment_env_arg="'`cat experiment_env.json | tr -d '\n' | tr -d ' '`'"
+echo $RUN_NUM
 
 paperspace jobs create \
   --project "Matching" \
@@ -48,7 +62,7 @@ paperspace jobs create \
   --customMetrics "testMetric1,testMetric2" \
   --container "paperspace/fastai:1.0-CUDA9.2-base-3.0-v1.0.6" \
   --machineType "P5000" \
-  --command "/paperspace/run.sh" \
+  --command "RUN_NUM=$RUN_NUM /paperspace/run.sh" \
   --workspace "https://github.com/eriknomitch/matching.git" \
   --workspaceUsername $GITHUB_USERNAME \
   --workspacePassword $GITHUB_PERSONAL_ACCESS_TOKEN
