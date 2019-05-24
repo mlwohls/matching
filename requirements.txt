@@ -1,6 +1,7 @@
+gradient-statsd
+gradient-sdk
 fastai==1.0.52
 pandas==0.24.2
-gradient-statsd
 usaddress
 sklearn
 nvector
