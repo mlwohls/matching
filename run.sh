@@ -16,16 +16,15 @@ function _checkpoint() {
   echo "----> $1"
 }
 
-function _install_requirements() {
+function _run_main() {
   _checkpoint "Installing Python requirements..."
   pip install --requirement requirements.txt > /dev/null
   echo
-}
 
-function _run_main() {
   _checkpoint "Converting main..."
   jupyter nbconvert --to python /storage/match_2p0/main.ipynb
   cp /storage/match_2p0/main.py .
+  echo
 
   _checkpoint "Running main.py..."
   python3.7 main.py
@@ -37,7 +36,6 @@ function _run_main() {
 case $1 in
   worker)
     _info "MULTI-NODE: WORKER"
-    _install_requirements
     _run_main
     ;;
   parameterServer)
@@ -45,11 +43,11 @@ case $1 in
     ;;
   job|"")
     _info "SINGLE-NODE: JOB"
-    _install_requirements
     _run_main
     ;;
   hyperparameter)
-    _info "HYPERPARAMETER"
+    _info "HYPERPARAMETER: WORKER"
+    _run_main
     ;;
   *)
     echo "fatal: Invalid run type supplied."
