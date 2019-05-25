@@ -8,3 +8,4 @@ nvector
 tldextract
 ipython
 jupyter
+hyperopt
