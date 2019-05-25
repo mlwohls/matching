@@ -9,3 +9,4 @@ tldextract
 ipython
 jupyter
 hyperopt
+shortuuid

@@ -1,20 +1,22 @@
 #!/bin/bash
 
-echo "Sesion:"
-whoami
-pwd
-echo
+env
 
-echo "RUN_NUM (run.sh): $RUN_NUM"
-echo
+# echo "Sesion:"
+# whoami
+# pwd
+# echo
 
-echo "Installing requirements..."
-pip install --requirement requirements.txt > /dev/null
-echo
+# echo "RUN_NUM (run.sh): $RUN_NUM"
+# echo
 
-echo "Converting..."
-jupyter nbconvert --to python /storage/match_2p0/main.ipynb
-cp /storage/match_2p0/main.py .
+# echo "Installing requirements..."
+# pip install --requirement requirements.txt > /dev/null
+# echo
 
-echo "Starting..."
-python3.7 main.py
+# echo "Converting..."
+# jupyter nbconvert --to python /storage/match_2p0/main.ipynb
+# cp /storage/match_2p0/main.py .
+
+# echo "Starting..."
+# python3.7 main.py
