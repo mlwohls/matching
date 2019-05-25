@@ -49,6 +49,9 @@ case $1 in
     _convert_main
     _run_main
     ;;
+  hyperparameter)
+    _info "HYPERPARAMETER"
+    ;;
   *)
     echo "fatal: Invalid run type supplied."
     exit 1
