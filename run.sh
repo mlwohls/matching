@@ -53,6 +53,10 @@ case $1 in
     _info $1
     #_run_main
     ;;
+  "hyperparameter:tune")
+    _info $1
+    python3.7 hyperparameter_tune.py
+    ;;
   *)
     echo "fatal: Invalid run type supplied."
     exit 1
