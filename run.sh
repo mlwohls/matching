@@ -22,13 +22,11 @@ function _install_requirements() {
   echo
 }
 
-function _convert_main() {
+function _run_main() {
   _checkpoint "Converting main..."
   jupyter nbconvert --to python /storage/match_2p0/main.ipynb
   cp /storage/match_2p0/main.py .
-}
 
-function _run_main() {
   _checkpoint "Running main.py..."
   python3.7 main.py
 }
@@ -39,14 +37,15 @@ function _run_main() {
 case $1 in
   worker)
     _info "MULTI-NODE: WORKER"
+    _install_requirements
+    _run_main
     ;;
-  parameter-server)
+  parameterServer)
     _info "MULTI-NODE: PARAMETER SERVER"
     ;;
   job|"")
     _info "SINGLE-NODE: JOB"
     _install_requirements
-    _convert_main
     _run_main
     ;;
   hyperparameter)
