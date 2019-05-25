@@ -34,20 +34,24 @@ function _run_main() {
 # MAIN -------------------------------------------
 # ------------------------------------------------
 case $1 in
-  worker)
-    _info "MULTI-NODE: WORKER"
+  "job")
+    _info $1
     _run_main
     ;;
-  parameterServer)
-    _info "MULTI-NODE: PARAMETER SERVER"
+  "experiment:multinode:worker")
+    _info $1
+    #_run_main
     ;;
-  job|"")
-    _info "SINGLE-NODE: JOB"
-    _run_main
+  "experiment:multinode:parameterServer")
+    _info $1
     ;;
-  hyperparameter)
-    _info "HYPERPARAMETER: WORKER"
-    _run_main
+  "experiment:singlenode")
+    _info $1
+    #_run_main
+    ;;
+  "hyperparameter:worker")
+    _info $1
+    #_run_main
     ;;
   *)
     echo "fatal: Invalid run type supplied."
