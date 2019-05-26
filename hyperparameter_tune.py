@@ -1,5 +1,6 @@
-from paperspace-sdk import hyper_tune
+from paperspace_sdk import hyper_tune
 from .model import train_model
+from hyperopt import hp, tpe
 
 hparam_def = {
     "dense_len": 8 + hp.randint("dense_len", 120),
