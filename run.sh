@@ -48,7 +48,7 @@ case $1 in
     ;;
   "experiment:multinode:worker")
     _info $1
-    # _run_main $1
+    _run_main $1
     ;;
   "experiment:multinode:parameterServer")
     _info $1
