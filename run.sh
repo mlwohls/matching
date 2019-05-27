@@ -4,7 +4,7 @@
 # UTILITY ----------------------------------------
 # ------------------------------------------------
 function _info() {
-    echo "TYPE: $1"
+    echo "Starting: Type: $1"
     echo "--------------------------------------------------"
     env
     echo "--------------------------------------------------"
@@ -23,6 +23,9 @@ function _checkpoint() {
 }
 
 function _run_main() {
+
+  _create_initial_artifacts $1
+
   _checkpoint "Installing Python requirements..."
   pip install --requirement requirements.txt > /dev/null
   echo
@@ -42,25 +45,27 @@ function _run_main() {
 case $1 in
   "job")
     _info $1
-    # _run_main
+    _run_main $1
     ;;
   "experiment:multinode:worker")
     _info $1
-    #_run_main
+    _run_main $1
     ;;
   "experiment:multinode:parameterServer")
     _info $1
+    # FIX:
     ;;
   "experiment:singlenode")
     _info $1
-    _run_main
+    _run_main $1
     ;;
   "hyperparameter:worker")
     _info $1
-    #_run_main
+    _run_main $1
     ;;
   "hyperparameter:tune")
     _info $1
+    # FIX:
     python3.7 hyperparameter_tune.py
     ;;
   *)
