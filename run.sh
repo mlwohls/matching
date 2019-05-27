@@ -23,19 +23,23 @@ function _checkpoint() {
 
 function _run_main() {
 
-  # _create_initial_artifacts $1
+  _main_filename="main"
+
+  if [[ $1 == "job" ]] ; then
+    _main_filename="main_job"
+  fi
 
   _checkpoint "Installing Python requirements..."
   pip install --requirement requirements.txt > /dev/null
   echo
 
   _checkpoint "Converting main..."
-  jupyter nbconvert --to python /storage/match_2p0/main.ipynb
-  cp /storage/match_2p0/main.py .
+  jupyter nbconvert --to python /storage/match_2p0/$_main_filename.ipynb
+  cp /storage/match_2p0/$_main_filename.py .
   echo
 
-  _checkpoint "Running main.py..."
-  python3.7 main.py
+  _checkpoint "Running $_main_filename.py..."
+  python3.7 $_main_filename.py
 }
 
 # ------------------------------------------------
@@ -44,7 +48,7 @@ function _run_main() {
 case $1 in
   "job")
     _info $1
-    # _run_main $1
+    _run_main $1
     ;;
   "experiment:multinode:worker")
     _info $1
