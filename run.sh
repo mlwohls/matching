@@ -12,6 +12,12 @@ function _info() {
     echo
 }
 
+function _create_initial_artifacts() {
+  echo "started" > "/artifacts/status"
+  echo $1 > "/artifacts/type"
+  env > "/artifacts/env"
+}
+
 function _checkpoint() {
   echo "----> $1"
 }
