@@ -44,11 +44,11 @@ function _run_main() {
 case $1 in
   "job")
     _info $1
-    _run_main $1
+    # _run_main $1
     ;;
   "experiment:multinode:worker")
     _info $1
-    _run_main $1
+    # _run_main $1
     ;;
   "experiment:multinode:parameterServer")
     _info $1
