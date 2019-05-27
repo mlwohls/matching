@@ -13,9 +13,8 @@ function _info() {
 }
 
 function _create_initial_artifacts() {
-  echo "started" > "/artifacts/status"
-  echo $1 > "/artifacts/type"
-  env > "/artifacts/env"
+  echo $1 > $PS_ARTIFACTS/type
+  env > $PS_ARTIFACTS/env
 }
 
 function _checkpoint() {
