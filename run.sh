@@ -47,7 +47,7 @@ case $1 in
     ;;
   "experiment:singlenode")
     _info $1
-    #_run_main
+    _run_main
     ;;
   "hyperparameter:worker")
     _info $1
