@@ -23,7 +23,7 @@ function _checkpoint() {
 
 function _run_main() {
 
-  _create_initial_artifacts $1
+  # _create_initial_artifacts $1
 
   _checkpoint "Installing Python requirements..."
   pip install --requirement requirements.txt > /dev/null
