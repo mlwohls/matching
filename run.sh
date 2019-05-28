@@ -30,7 +30,7 @@ function _run_main() {
   fi
 
   _checkpoint "Installing Python requirements..."
-  pip install --requirement requirements.txt > /dev/null
+  pip install --upgrade --requirement requirements.txt > /dev/null
   echo
 
   _checkpoint "Converting main..."
