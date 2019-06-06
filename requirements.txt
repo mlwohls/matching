@@ -11,3 +11,4 @@ ipython
 jupyter
 hyperopt
 shortuuid
+geographiclib
