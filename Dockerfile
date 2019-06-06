@@ -4,3 +4,5 @@ RUN env
 
 COPY requirements.txt /root
 
+RUN pip install --upgrade --requirement /root/requirements.txt
+

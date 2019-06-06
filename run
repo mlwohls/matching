@@ -1,4 +1,5 @@
 #!/bin/zsh
 
-docker build --tag eriknomitch-matching:latest .
+docker build --tag eriknomitch/matching:latest . && \
+  docker push eriknomitch/matching:latest
 
