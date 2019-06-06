@@ -1,6 +1,7 @@
 {
   "default": {
-    "extensions": [".py", ".sh"]
+    "extensions": [".py", ".sh"],
+    "files": ["Dockerfile"
   },
   "docs": {
     "extensions": [".md"],
