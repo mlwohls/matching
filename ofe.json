@@ -1,7 +1,7 @@
 {
   "default": {
     "extensions": [".py", ".sh"],
-    "files": ["Dockerfile"
+    "files": ["Dockerfile", "run.sh"]
   },
   "docs": {
     "extensions": [".md"],
