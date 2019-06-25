@@ -63,6 +63,7 @@ function _run_main() {
   _checkpoint "Making job-specific subdirectories..."
   # ----------------------------------------------
   mkdir -p models/logs
+  echo
 
   _checkpoint "Installing Python requirements..."
   # ----------------------------------------------
