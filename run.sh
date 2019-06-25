@@ -29,6 +29,7 @@ function _run_main() {
   fi
 
   _base_dir="/storage/match_2p0"
+  _config_dir="$_base_dir/configs"
   _job_dir="$_base_dir/jobs/$NAME"
   _main_filename="main_job"
 
@@ -47,12 +48,20 @@ function _run_main() {
     $_base_dir/requirements.txt \
     $_job_dir
 
+  cp -v \
+    $_config_dir/model_config_$NAME.json \
+    $_job_dir/model_config.json
+
   echo
 
   _checkpoint "Changing to $_job_dir..."
   # ----------------------------------------------
   cd $_job_dir || exit 1
   echo
+
+  _checkpoint "Making job subdirectories..."
+  # ----------------------------------------------
+  mkdir -p models/logs
 
   _checkpoint "Installing Python requirements..."
   # ----------------------------------------------
