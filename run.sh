@@ -21,25 +21,69 @@ function _checkpoint() {
   echo "----> $1"
 }
 
+# function _run_main() {
+
+#   _main_filename="main"
+
+#   if [[ $1 == "job" ]] ; then
+#     _main_filename="main_job"
+#   fi
+
+#   _checkpoint "Installing Python requirements..."
+#   pip install --upgrade --requirement requirements.txt > /dev/null
+#   echo
+
+#   _checkpoint "Converting main..."
+#   jupyter nbconvert --to python /storage/match_2p0/$_main_filename.ipynb
+#   cp /storage/match_2p0/$_main_filename.py .
+#   echo
+
+#   _checkpoint "Running $_main_filename.py..."
+#   python3.7 $_main_filename.py
+# }
+
 function _run_main() {
 
-  _main_filename="main"
-
-  if [[ $1 == "job" ]] ; then
-    _main_filename="main_job"
+  if [[ -z $NAME ]] ; then
+    echo "fatal: NAME not set."
+    exit 1
   fi
 
+  _base_dir="/storage/match_2p0"
+  _job_dir="$_base_dir/$NAME"
+  _main_filename="main_job"
+
+  mkdir $_job_dir
+
+  if [[ ! -d $_job_dir ]] ; then
+    echo "fatal: Could not make $_job_dir"
+    exit 1
+  fi
+
+  _checkpoint "Copying files to $_job_dir"
+  # ----------------------------------------------
+  cd $_job_dir
+  pwd
+
+  cp -v $_base_dir/*.ipynb $_job_dir
+  cp -v $_base_dir/requirements.txt $_job_dir
+
+  echo
+
   _checkpoint "Installing Python requirements..."
+  # ----------------------------------------------
   pip install --upgrade --requirement requirements.txt > /dev/null
   echo
 
   _checkpoint "Converting main..."
-  jupyter nbconvert --to python /storage/match_2p0/$_main_filename.ipynb
-  cp /storage/match_2p0/$_main_filename.py .
+  # ----------------------------------------------
+  jupyter nbconvert --to python $_main_filename.ipynb
   echo
 
   _checkpoint "Running $_main_filename.py..."
-  python3.7 $_main_filename.py
+  # ----------------------------------------------
+  echo "python3.7 $_main_filename.py"
+  # python3.7 $_main_filename.py
 }
 
 # ------------------------------------------------
@@ -61,15 +105,6 @@ case $1 in
   "experiment:singlenode")
     _info $1
     _run_main $1
-    ;;
-  "hyperparameter:worker")
-    _info $1
-    _run_main $1
-    ;;
-  "hyperparameter:tune")
-    _info $1
-    # FIX:
-    python3.7 hyperparameter_tune.py
     ;;
   *)
     echo "fatal: Invalid run type supplied."
