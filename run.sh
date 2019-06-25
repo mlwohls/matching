@@ -50,8 +50,8 @@ function _run_main() {
     $_job_dir
 
   cp -v \
-    $_config_dir/model_config_$NAME.msgpack \
-    $_job_dir/model_config.msgpack
+    $_config_dir/run_params_$NAME.msgpack \
+    $_job_dir/run_params.msgpack
 
   echo
 
