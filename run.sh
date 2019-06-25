@@ -42,7 +42,6 @@ function _run_main() {
 
   _checkpoint "Copying files to $_job_dir"
   # ----------------------------------------------
-
   cp -v \
     $_base_dir/*.ipynb \
     $_base_dir/requirements.txt \
