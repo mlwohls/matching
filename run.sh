@@ -51,12 +51,11 @@ function _run_main() {
 
   _checkpoint "Changing to $_job_dir..."
   # ----------------------------------------------
-  cd $_job_dir
-  pwd
+  cd $_job_dir || exit 1
+  echo
 
   _checkpoint "Installing Python requirements..."
   # ----------------------------------------------
-
   pip install --upgrade --requirement requirements.txt > /dev/null
   echo
 
