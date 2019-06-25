@@ -21,27 +21,6 @@ function _checkpoint() {
   echo "----> $1"
 }
 
-# function _run_main() {
-
-#   _main_filename="main"
-
-#   if [[ $1 == "job" ]] ; then
-#     _main_filename="main_job"
-#   fi
-
-#   _checkpoint "Installing Python requirements..."
-#   pip install --upgrade --requirement requirements.txt > /dev/null
-#   echo
-
-#   _checkpoint "Converting main..."
-#   jupyter nbconvert --to python /storage/match_2p0/$_main_filename.ipynb
-#   cp /storage/match_2p0/$_main_filename.py .
-#   echo
-
-#   _checkpoint "Running $_main_filename.py..."
-#   python3.7 $_main_filename.py
-# }
-
 function _run_main() {
 
   if [[ -z $NAME ]] ; then
