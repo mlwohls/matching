@@ -77,8 +77,7 @@ function _run_main() {
 
   _checkpoint "Running $_main_filename.py..."
   # ----------------------------------------------
-  echo "python3.7 $_main_filename.py"
-  # python3.7 $_main_filename.py
+  python3.7 $_main_filename.py
 }
 
 # ------------------------------------------------
