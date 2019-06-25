@@ -29,7 +29,7 @@ function _run_main() {
   fi
 
   _base_dir="/storage/match_2p0"
-  _job_dir="$_base_dir/$NAME"
+  _job_dir="$_base_dir/jobs/$NAME"
   _main_filename="main_job"
 
   mkdir $_job_dir
@@ -41,16 +41,22 @@ function _run_main() {
 
   _checkpoint "Copying files to $_job_dir"
   # ----------------------------------------------
-  cd $_job_dir
-  pwd
 
-  cp -v $_base_dir/*.ipynb $_job_dir
-  cp -v $_base_dir/requirements.txt $_job_dir
+  cp -v \
+    $_base_dir/*.ipynb \
+    $_base_dir/requirements.txt \
+    $_job_dir
 
   echo
 
+  _checkpoint "Changing to $_job_dir..."
+  # ----------------------------------------------
+  cd $_job_dir
+  pwd
+
   _checkpoint "Installing Python requirements..."
   # ----------------------------------------------
+
   pip install --upgrade --requirement requirements.txt > /dev/null
   echo
 
