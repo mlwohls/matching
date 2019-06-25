@@ -33,6 +33,8 @@ function _run_main() {
   _job_dir="$_base_dir/jobs/$NAME"
   _main_filename="main_job"
 
+  _checkpoint "Creating $_job_dir..."
+  # ----------------------------------------------
   mkdir $_job_dir
 
   if [[ ! -d $_job_dir ]] ; then
@@ -40,7 +42,7 @@ function _run_main() {
     exit 1
   fi
 
-  _checkpoint "Copying files to $_job_dir"
+  _checkpoint "Copying files to $_job_dir..."
   # ----------------------------------------------
   cp -v \
     $_base_dir/*.ipynb \
@@ -58,7 +60,7 @@ function _run_main() {
   cd $_job_dir || exit 1
   echo
 
-  _checkpoint "Making job subdirectories..."
+  _checkpoint "Making job-specific subdirectories..."
   # ----------------------------------------------
   mkdir -p models/logs
 
