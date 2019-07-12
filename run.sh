@@ -31,7 +31,7 @@ function _run_main() {
   _base_dir="/storage/match_2p0"
   _config_dir="$_base_dir/configs"
   _job_dir="$_base_dir/jobs/$NAME"
-  _main_filename="main_job"
+  _main_filename="$1"
 
   _checkpoint "Creating $_job_dir..."
   # ----------------------------------------------
@@ -70,7 +70,7 @@ function _run_main() {
   pip install --upgrade --requirement requirements.txt > /dev/null
   echo
 
-  _checkpoint "Converting main..."
+  _checkpoint "Converting $_main_filename.ipynb..."
   # ----------------------------------------------
   jupyter nbconvert --to python $_main_filename.ipynb
   echo
@@ -86,19 +86,11 @@ function _run_main() {
 case $1 in
   "job")
     _info $1
-    _run_main $1
+    _run_main "main_job"
     ;;
-  "experiment:multinode:worker")
+  "retrain")
     _info $1
-    _run_main $1
-    ;;
-  "experiment:multinode:parameterServer")
-    _info $1
-    # FIX:
-    ;;
-  "experiment:singlenode")
-    _info $1
-    _run_main $1
+    _run_main "retrain_job"
     ;;
   *)
     echo "fatal: Invalid run type supplied."
