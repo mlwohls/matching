@@ -88,6 +88,10 @@ case $1 in
     _info $1
     _run_main "main_job"
     ;;
+  "eval")
+    _info $1
+    _run_main "main_eval_job"
+    ;;
   "retrain")
     _info $1
     _run_main "retrain_job"
