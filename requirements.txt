@@ -3,13 +3,9 @@ gradient-sdk
 fastai==1.0.52
 pandas==0.24.2
 torch==1.1.0
-usaddress
 sklearn
-nvector
-tldextract
 ipython
 jupyter
 hyperopt
 shortuuid
-geographiclib
 psutil
