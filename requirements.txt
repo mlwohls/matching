@@ -1,6 +1,6 @@
 gradient-statsd
 gradient-sdk
-fastai==2.0.0
+fastai==1.0.61
 pandas==0.24.2
 torch==1.1.0
 sklearn
