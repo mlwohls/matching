@@ -28,7 +28,7 @@ function _run_main() {
     exit 1
   fi
 
-  _base_dir="/storage/match_2p0"
+  _base_dir="/storage/SPY"
   _config_dir="$_base_dir/configs"
   _job_dir="$_base_dir/jobs/$NAME"
   _main_filename="$1"
